@@ -9,7 +9,7 @@ GRN_BR="\033[1;32m"
 GRN_LT="\033[92m"
 BLU="\033[0;34m"
 BLU_BR="\033[1;34m"
-BLU_LT="\033[94m"      # Light sky blue
+BLU_LT="\033[94m"
 YLW="\033[1;33m"
 BOLD="\033[1m"
 RESET="\033[0m"
@@ -30,7 +30,7 @@ TestColorCodes() {
 
 # === Print Functions ===
 PrintDebug() {
-  echo -e "[${BLU_LT}DEBUG${RESET}] $1"
+  echo -e "[${BLU_LT}DBUG${RESET}] $1"
 }
 
 PrintInfo() {
@@ -42,5 +42,5 @@ PrintWarn() {
 }
 
 PrintErr() {
-  echo -e "[${BOLD}${RED}ERROR${RESET}] $1"
+  echo -e "[${BOLD}${RED}ERRO${RESET}] $1"
 }

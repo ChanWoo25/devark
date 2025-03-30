@@ -38,5 +38,18 @@ echo -e "${GRN}
 └───────────────────────────────────────────────────┘
 ${RESET}"
 
+# ➤ → ⇒ › ⋯ … • ▪ ▶ ⏵ ◇ ◆ — ╭─ / ├─ / ╰─
 # TestColorCodes
 Initialize
+
+PrintInfo "◇ Install UV Manager"
+if ! command -v uv &> /dev/null; then
+  PrintInfo "  ◆ Not found. Installing..."
+  echo ''
+  echo '────────── WORK ──────────'
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  echo '────────── DONE ──────────'
+  echo ''
+else
+  PrintInfo "  ◆ Already installed."
+fi
