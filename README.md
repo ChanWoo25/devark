@@ -14,6 +14,6 @@
 # linux
 ./initialize.sh
 
-# Windows (not working yet)
-./initialize.ps1
+# Windows (supports powershell 7)
+pwsh ./initialize.ps1
 ```

@@ -1,32 +1,66 @@
-# PowerShell Script: install_python_venv.ps1
-Write-Output "Running on Windows..."
+# Check PowerShell version
+$PSMajor = $PSVersionTable.PSVersion.Major
+$PSMinor = $PSVersionTable.PSVersion.Minor
 
-# Check if Python 3.12 is installed
-$pythonVersion = python --version 2>$null
-if ($pythonVersion -match "3\.12") {
-    Write-Output "Python 3.12 is already installed."
-} else {
-    Write-Output "Installing Python 3.12..."
-    winget install Python.Python.3.12
+if ($PSMajor -lt 7) {
+  Write-Host "This script requires PowerShell 7 or higher. (current shell: ${PSMajor}.${PSMinor}.x)"
+  Write-Host ""
+  Write-Host "[Powershell 7 Installation guide here]"
+  Write-Host "1.  latest  version: winget install --id Microsoft.PowerShell --source winget"
+  Write-Host "2. specific version: winget install --id Microsoft.PowerShell --source winget --version 7.4.5.0"
+  Write-Host ""
+  Write-Host "Check more detail about powershell from 'https://github.com/PowerShell/PowerShell/releases'"
+  Write-Host "After installing, run this script again using 'pwsh' instead of 'powershell'. "
+  Write-Host "Or just open powershell 7 terminal and run this script again."
+  exit 1
 }
 
-# Wait for installation
-Start-Sleep -Seconds 5
+$ScriptDir = Split-Path -Parent ${MyInvocation}.MyCommand.Path
+$ScriptPath = ${MyInvocation}.MyCommand.Path
+# Write-Host "ScriptDir: ${ScriptDir}"
+# Write-Host "ScriptDir: ${ScriptPath}"
 
-# Verify installation
-$pythonVersion = python --version 2>$null
-if ($pythonVersion -match "3\.12") {
-    Write-Output "Python 3.12 installation successful."
-} else {
-    Write-Output "Python 3.12 installation failed."
+. "$ScriptDir\utils\powershell_functions.ps1"
+
+# Ctrl+C handling
+$interrupted = {
+    Print-Warn "Interrupted by user $env:USERNAME..."
     exit 1
 }
+$cleanup = {
+    Write-Host "Cleaning up before exit..."
+}
+# Register cleanup handlers
+$null = Register-EngineEvent PowerShell.Exiting -Action $cleanup
+$null = Register-EngineEvent Console.CancelKeyPress -Action $interrupted
 
-# Create virtual environment
-Write-Output "Creating virtual environment..."
-python -m venv .venv
-Write-Output "Virtual environment created successfully."
+function Initialize {
+    Print-Debug "SCRIPT_DIR: $ScriptDir"
+    Print-Debug "SCRIPT_PATH: $ScriptPath"
+}
 
-# Activation instruction
-Write-Output "To activate the virtual environment, run:"
-Write-Output ".\.venv\Scripts\Activate"
+Write-Host "${Grn}
+┌───────────────────────────────────────────────────┐
+│ ██████╗ ███████╗██╗   ██╗ █████╗ ██████╗ ██╗  ██╗ │
+│ ██╔══██╗██╔════╝██║   ██║██╔══██╗██╔══██║██║ ██╔╝ │
+│ ██║  ██║█████╗  ██║   ██║███████║██████╚╗█████╔╝  │
+│ ██║  ██║██╔══╝  ╚██╗ ██╔╝██╔══██║██╔═╗██║██╔═██╗  │
+│ ██████╔╝███████╗ ╚████╔╝ ██║  ██║██║ ║██║██║  ██╗ │
+│ ╚═════╝ ╚══════╝  ╚═══╝  ╚═╝  ╚═╝╚═╝ ╚══╝╚═╝  ╚═╝ │
+└───────────────────────────────────────────────────┘
+${Reset}"
+
+Initialize
+
+Print-Info "◇ Install UV Manager"
+if (-not (Get-Command uv -ErrorAction SilentlyContinue)) {
+  Print-Info "  ◆ Not found. Installing..."
+  Write-Host ''
+  Write-Host '────────── WORK ──────────'
+  powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+  Write-Host '────────── DONE ──────────'
+  Write-Host ''
+}
+else {
+  Print-Info "  ◆ Already installed."
+}
