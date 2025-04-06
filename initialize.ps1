@@ -64,3 +64,9 @@ if (-not (Get-Command uv -ErrorAction SilentlyContinue)) {
 else {
   Print-Info "  ◆ Already installed."
 }
+
+# Add autocompletion for uv
+if (!(Test-Path -Path $PROFILE)) {
+  New-Item -ItemType File -Path $PROFILE -Force
+}
+Add-Content -Path $PROFILE -Value '(& uv generate-shell-completion powershell) | Out-String | Invoke-Expression'

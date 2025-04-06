@@ -17,3 +17,26 @@
 # Windows (supports powershell 7)
 pwsh ./initialize.ps1
 ```
+
+## UV Guide
+
+### lock and sync
+
+- In default, locaking and syncing are *automatic* in uv.
+- Before `uv run` (invoking the requested command) or `uv tree`.
+
+#### How to control lock & sync
+
+```shell
+# to disable automatic locking, but raise an error if the lockfile is not up-to-date
+uv run --locked ...
+# to run without checkint up-to-date
+uv run --frozen ...
+# similary, without checking
+uv run --no-sync ...
+```
+
+#### How to check the lockfile
+
+- lockfile is outdated
+  - 
