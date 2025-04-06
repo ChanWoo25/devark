@@ -1,0 +1,3 @@
+[submodule "projects/Clarus"]
+	path = projects/Clarus
+	url = https://github.com/ChanWoo25/Clarus
