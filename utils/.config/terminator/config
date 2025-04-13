@@ -1,0 +1,56 @@
+[global_config]
+  enabled_plugins = CurrDirOpen, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler
+[keybindings]
+[profiles]
+  [[default]]
+    visible_bell = True
+    icon_bell = False
+    background_color = "#300a24"
+    background_darkness = 0.95
+    background_type = transparent
+    foreground_color = "#ffffff"
+    scroll_on_output = True
+    scrollback_lines = 5000
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+      directory = ""
+  [[base]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 1313:32
+      maximised = False
+      fullscreen = False
+      size = 1247, 1371
+      title = leecw@leecw: ~/Workspaces
+      last_active_term = 48ff7a3a-40ca-4bd8-931c-6d74b382ec89
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 674
+      ratio = 0.493411420204978
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = default
+      uuid = 48ff7a3a-40ca-4bd8-931c-6d74b382ec89
+      directory = /home/leecw/Data
+    [[[terminal3]]]
+      type = Terminal
+      parent = child1
+      order = 1
+      profile = default
+      uuid = b95c77a3-9fe0-49fa-822c-b9f647b1f132
+      directory = /home/leecw/Workspaces
+[plugins]
