@@ -1,0 +1,40 @@
+{
+  // CMake Tools settings
+  "cmake.allowCommentsInPresetsFile": true,
+  "cmake.configureOnEdit": false,
+  "cmake.configureOnOpen": false,
+  // C/C++ Extension settings
+  "[cpp]": {
+    "editor.wordBasedSuggestions": "currentDocument",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.formatOnSave": true,
+    "editor.inlayHints.enabled": "offUnlessPressed"
+  },
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "clangd.checkUpdates": false,
+  "clangd.path": "/usr/bin/clangd",
+  "clangd.arguments": [
+    "--query-driver=/usr/bin/c++,/usr/bin/g++",
+    "--compile-commands-dir=build/default",
+    "--background-index",
+    "--header-insertion=never",
+    "--log=verbose",
+    "-j=8"
+  ],
+  "clang-format.fallbackStyle": "Google",
+  // JSON settings
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  // Python settings
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "python.defaultInterpreterPath": "/bin/python"
+}

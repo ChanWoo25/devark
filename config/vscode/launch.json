@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug devark_project",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/default/devark_project",
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": true,
+      "MIMode": "gdb",
+      "externalConsole": false,
+      "preLaunchTask": "CMake: Build (preset default)"
+    }
+  ]
+}

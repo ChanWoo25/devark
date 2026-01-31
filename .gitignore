@@ -1,5 +1,6 @@
 # vscode
 .vscode/
+.cache/
 
 # C/C++
 build/
