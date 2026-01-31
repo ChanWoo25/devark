@@ -4,6 +4,7 @@
 
 # C/C++
 build/
+install/
 
 # Python
 .venv/

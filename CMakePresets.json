@@ -9,12 +9,13 @@
     {
       "name": "default",
       "displayName": "Default",
-      "description": "Configure with Unix Makefiles in a preset build directory.",
-      "generator": "Unix Makefiles",
+      "description": "Configure with Ninja in a preset build directory.",
+      "generator": "Ninja",
       "binaryDir": "build/${presetName}",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "RelWithDebugInfo",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
       }
     }
   ],
@@ -23,9 +24,7 @@
       "name": "default",
       "displayName": "Default",
       "configurePreset": "default",
-      "targets": [
-        "devark_project"
-      ]
+      "targets": ["devark_project"]
     }
   ]
 }
