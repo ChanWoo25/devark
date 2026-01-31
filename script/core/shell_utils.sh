@@ -14,7 +14,7 @@ YLW="\033[1;33m"
 BOLD="\033[1m"
 RESET="\033[0m"
 
-TestColorCodes() {
+test_color_codes() {
   echo -e "${RED}Test text to test color code${RESET}"
   echo -e "${RED_BR}Test text to test color code${RESET}"
   echo -e "${RED_LT}Test text to test color code${RESET}"
@@ -28,39 +28,16 @@ TestColorCodes() {
   echo -e "${BOLD}Test text to test color code${RESET}"
 }
 
-# === Print Functions ===
-PrintDebug() {
-  echo -e "[${BLU_LT}DBUG${RESET}] $1"
-}
-
-PrintInfo() {
-  echo -e "[${BOLD}${GRN}INFO${RESET}] $1"
-}
-
-PrintWarn() {
-  echo -e "[${BOLD}${YLW}WARN${RESET}] $1"
-}
-
-PrintErr() {
-  echo -e "[${BOLD}${RED}ERRO${RESET}] $1"
-}
-
 # === spdlog-style log functions ===
 logi() {
   local timestamp=$(date +"%y%m%d-%H%M%S.%3N")
-  echo -e "[$timestamp] [info] $1"
+  echo -e "[$timestamp] [${BOLD}${GRN}info${RESET}] $1"
 }
 logw() {
   local timestamp=$(date +"%y%m%d-%H%M%S.%3N")
-  echo -e "[$timestamp] [warn] $1"
+  echo -e "[$timestamp] [${BOLD}${YLW}warn${RESET}] $1"
 }
 loge() {
   local timestamp=$(date +"%y%m%d-%H%M%S.%3N")
-  echo -e "[$timestamp] [error] $1"
-}
-
-# ===
-get_script_dir() {
-  local script_dir="$(cd "$(dirname "${BASH_SOURCE[1]}")" && pwd)"
-  echo "$script_dir"
+  echo -e "[$timestamp] [${BOLD}${RED}error${RESET}] $1"
 }
