@@ -29,6 +29,10 @@ test_color_codes() {
 }
 
 # === spdlog-style log functions ===
+log() {
+  local timestamp=$(date +"%y%m%d-%H%M%S.%3N")
+  echo -e "[$timestamp] $1"
+}
 logi() {
   local timestamp=$(date +"%y%m%d-%H%M%S.%3N")
   echo -e "[$timestamp] [${BOLD}${GRN}info${RESET}] $1"

@@ -3,12 +3,14 @@
   "cmake.allowCommentsInPresetsFile": true,
   "cmake.configureOnEdit": false,
   "cmake.configureOnOpen": false,
+  "cmake.automaticReconfigure": false,
   // C/C++ Extension settings
   "[cpp]": {
     "editor.wordBasedSuggestions": "currentDocument",
     "editor.semanticHighlighting.enabled": true,
     "editor.defaultFormatter": "xaver.clang-format",
     "editor.formatOnSave": true,
+    // - press 'ctrl + alt' for inlay hints
     "editor.inlayHints.enabled": "offUnlessPressed"
   },
   "C_Cpp.intelliSenseEngine": "disabled",

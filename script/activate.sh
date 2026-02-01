@@ -3,7 +3,6 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 script_path="${script_dir}/$(basename "${BASH_SOURCE[0]}")"
 # echo "Script Directory: $script_dir"
 # echo "Script Path: $script_path"
-
 source "$script_dir/core/shell_utils.sh"
 
 logi "Activating DevArk virtual environment..."

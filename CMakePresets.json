@@ -11,7 +11,7 @@
       "displayName": "Default",
       "description": "Configure with Ninja in a preset build directory.",
       "generator": "Ninja",
-      "binaryDir": "build/${presetName}",
+      "binaryDir": "build/${presetName}", // same with '${sourceDir}/build/${presetName}'
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "RelWithDebugInfo",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
