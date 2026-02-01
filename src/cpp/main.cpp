@@ -10,7 +10,7 @@ int main() {
   std::map<std::string, int> vlevel_config;
   vlevel_config["logger"] = 2;
   vlevel_config["main"] = 1;
-  core::Logger::Instance().Init("log.txt", vlevel_config);
+  core::Logger::Instance().Init("logs/log.txt", vlevel_config);
   logi("Server Started");
 
   std::vector<int> numbers = {1, 2, 3, 4, 5};
