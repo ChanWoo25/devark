@@ -1,22 +1,20 @@
+// Authors:
+//   - Chanwoo Lee <leechanwoo25@outlook.com>
+//
 #include <core/logger.h>
 
-#include <iostream>
 #include <string>
 #include <vector>
 
-#include "spdlog/sinks/stdout_color_sinks.h"
-#include "spdlog/spdlog.h"
-
 int main() {
-  auto logger = spdlog::stdout_color_mt("console");
-  spdlog::set_default_logger(logger);
+  std::map<std::string, int> vlevel_config;
+  vlevel_config["logger"] = 2;
+  vlevel_config["main"] = 1;
+  core::Logger::Instance().Init("log.txt", vlevel_config);
+  logi("Server Started");
 
-  core::Logger app("DemoApp");
   std::vector<int> numbers = {1, 2, 3, 4, 5};
-
-  core::logi("test: {}", 5);
-
-  app.process_data(numbers);
+  core::Logger::Instance().process_data(numbers);
 
   return 0;
 }
